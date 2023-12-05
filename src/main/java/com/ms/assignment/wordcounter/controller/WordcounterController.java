@@ -1,6 +1,7 @@
 package com.ms.assignment.wordcounter.controller;
 
 import com.ms.assignment.wordcounter.service.WordcounterService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class WordcounterController {
         this.wordcounterService = wordcounterService;
     }
     @PostMapping("/add-words")
-    public ResponseEntity addWords(@RequestBody List<String> words) {
+    public ResponseEntity addWords(@Valid @RequestBody List<String> words) {
         wordcounterService.addWords(words);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
